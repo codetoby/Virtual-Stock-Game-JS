@@ -1,6 +1,4 @@
-DiscordBot\.env
-website\.gitignore
-website\node_modules
-backend\node_modules
-backend\.env
-Tasks\node_modules
+\DiscordBot\.env
+\backend\node_modules
+\backend\.env
+\Tasks\node_modules
