@@ -1,0 +1,56 @@
+const { Strategy } = require('passport-discord')
+const passport = require('passport');
+const { getPool } = require('../datenbank/createPool');
+
+
+let conn;
+
+passport.serializeUser((user, done) => {
+    console.log(user);
+    return done(null, user.userid)
+})
+
+passport.deserializeUser(async (id, done) => {
+    conn = await getPool()
+    const find = await conn.query(`SELECT * from discordauth02 WHERE userid =?`, [id])
+    return find ? done(null, find) : done(null, null)
+})
+
+passport.use(
+    new Strategy({
+    clientID: '994349846431547463',
+    clientSecret:  '35UnFYP_mVM-kSmKOiWVsdmeCv6QCExp',
+    callbackURL: "https://api.tleem.me/api/auth/discord/redirect",
+    scope: ["identify", 'email']
+    },
+    async (accessToken, refreshToken, profile, done) => {
+        console.log(profile);
+        const { id, email, avatar, username, discriminator} = profile
+        conn = await getPool()
+
+        const avatar_url =`https://cdn.discordapp.com/avatars/${id}/${avatar}.jpg`
+
+        const find = await conn.query(`SELECT * from discordauth02 WHERE userid =?`, [id])
+        if (find.length === 1) {
+            await conn.query(`UPDATE discordauth02
+            SET accessToken = ?, refreshToken=?, avatar_url=?, username=?, discriminator=?
+            WHERE userid=?`, [
+                accessToken, refreshToken, avatar_url, username, discriminator, id
+                
+            ])
+            return done(null, find[0])
+        }
+        else {
+            const newUser = await conn.query(`INSERT INTO discordauth02 
+            (userid, accessToken, refreshToken, email, avatar_url, username, discriminator)
+            VALUES (?, ?, ?, ?, ?, ?, ?)`, [ 
+                id, accessToken, refreshToken, email, avatar_url, username, discriminator
+            ])
+            console.log(newUser[0])
+            return done(null, newUser[0])
+        }
+    })
+)
+
+
+
