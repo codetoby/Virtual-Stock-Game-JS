@@ -9,9 +9,7 @@ const updatePort = async (userid, totalSpend, userStocks) => {
     const userData = await conn.query(`SELECT cash, portfolio from userdata WHERE userid=?`, [userid])
     const checkFinancials = await checkFin(userData[0], totalSpend)
 
-    if (checkFinancials.message) {
-        return checkFinancials
-    }
+    if (checkFinancials.message) return checkFinancials
 
     await conn.query(`UPDATE userdata SET cash=?, portfolio=? WHERE userid=?`, [checkFinancials.cash, checkFinancials.portfolio, userid])
     return true

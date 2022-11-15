@@ -10,18 +10,15 @@ const updatePort = async ( userid, stockticker, sellshares, totalSell, prevShare
 
     const updatedCash = userData[0].cash + totalSell
     const updatedPortfolio = userData[0].portfolio - totalSell
-
     const updatedShares = prevShares - parseInt(sellshares)
     const updatedTotalSpend = prevTotal - totalSell
-
-
     const updateUserData = {
         cash: updatedCash,
         portfolio: updatedPortfolio
     }
     
     if (updatedShares === 0) {
-        await conn.query(`DELETE FROM alluserstocks WHERE userid=? AND stockticker=?`, [userid, stockticker])
+        return await conn.query(`DELETE FROM alluserstocks WHERE userid=? AND stockticker=?`, [userid, stockticker])
     } else {
         await conn.query(`UPDATE alluserstocks SET shares=?, totalSpend=? WHERE userid=? AND stockticker=?`, [updatedShares, updatedTotalSpend, userid, stockticker])
     }

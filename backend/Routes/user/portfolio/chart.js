@@ -9,8 +9,6 @@ router.get('/', async (req, res) => {
     try {
         let returnData = []
         const userid = req.user[0].userid
-        console.log(req.user);
-        console.log(userid)
         conn = await getPool()
         const userData = await conn.query(`SELECT *
                                             FROM portvalues
@@ -24,7 +22,6 @@ router.get('/', async (req, res) => {
 
         for await (const value of userData) {
             const form = await conn.query(`SELECT DATE_FORMAT(?, '%d/%m/%Y')`, [value.datet])
-            console.log(form)
             let date = Object.values(form[0])[0]
             returnData.push({date: date, value: value.portvalue})
         }

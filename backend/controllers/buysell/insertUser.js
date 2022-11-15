@@ -21,11 +21,8 @@ async function insertUser(stockname, userid, usershares, buyprice, usertotalSpen
                         WHERE userid = ? AND stockticker=? = ?`,
             [updatedShares, updatedBuyPrice, updatedTotalSpend, date, userid, stockname])
 
-    } else {
-
-        await con.query(`INSERT INTO alluserstocks (userid, stockticker, shares, buyprice, totalSpend, buydate) VALUES(?, ?, ?, ?, ?, ?)`,
+    } else await con.query(`INSERT INTO alluserstocks (userid, stockticker, shares, buyprice, totalSpend, buydate) VALUES(?, ?, ?, ?, ?, ?)`,
             [userid, stockname, usershares, buyprice, usertotalSpend, date])
-    }
 
 }
 

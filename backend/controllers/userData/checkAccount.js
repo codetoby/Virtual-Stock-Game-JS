@@ -11,8 +11,6 @@ const checkUser = async (userid) => {
                                 WHERE userid=?`, 
                                 [userid])
 
-    console.log(find);
-
     return find.length === 1 ? true : response = { message: "Missing Portfolio" }
 }
 

@@ -24,7 +24,7 @@ router.post('/', async (req, res) => {
             const stockData = await validTicker(stockticker)
 
             if (stockData.message) {
-                res.send(stockData)
+                return res.send(stockData)
             }
 
             currentPrice = stockData.c

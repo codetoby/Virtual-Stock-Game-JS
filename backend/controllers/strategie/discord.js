@@ -24,7 +24,6 @@ passport.use(
     scope: ["identify", 'email']
     },
     async (accessToken, refreshToken, profile, done) => {
-        console.log(profile);
         const { id, email, avatar, username, discriminator} = profile
         conn = await getPool()
 
@@ -46,7 +45,6 @@ passport.use(
             VALUES (?, ?, ?, ?, ?, ?, ?)`, [ 
                 id, accessToken, refreshToken, email, avatar_url, username, discriminator
             ])
-            console.log(newUser[0])
             return done(null, newUser[0])
         }
     })
