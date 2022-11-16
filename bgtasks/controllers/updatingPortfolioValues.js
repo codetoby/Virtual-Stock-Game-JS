@@ -15,12 +15,11 @@ async function currentPortfolioValue(data) {
 
         portfolio += parseInt(stock.shares) * price
     }
-   
     return precise(portfolio)
 }
 
 
-async function totalChange(data, userData) {
+async function updatingPortfolioValues(data, userData) {
 
     let portfolioValue = await currentPortfolioValue(data)
     let total = 0
@@ -42,4 +41,4 @@ async function totalChange(data, userData) {
     return res
 }
 
-module.exports = { totalChange }
+module.exports = { updatingPortfolioValues }

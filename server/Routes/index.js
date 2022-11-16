@@ -4,7 +4,7 @@ const { getPool } = require('../controllers/datenbank/createPool')
 const passport = require('passport')
 const MariaDBStore = require('express-session-mariadb-store')
 
-const auth = require('./auth/')
+const auth = require('./auth')
 const user = require('./user')
 
 require('../controllers/strategie/discord')

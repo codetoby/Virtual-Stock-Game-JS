@@ -1,5 +1,5 @@
 const { getPool } = require("./createPool");
-const { totalChange } = require("./controllers/totalChange");
+const { updatingPortfolioValues } = require("./controllers/updatingPortfolioValues");
 
 let conn;
 
