@@ -1,4 +1,5 @@
 const mariadb = require('mariadb')
+require('dotenv').config()
 
 var pool;
 module.exports = {
@@ -6,11 +7,11 @@ module.exports = {
         if (!pool) {
         const config = {
             connectionLimit : 10,
-            host: "188.68.41.89",
-            port: "3308",
-            user: "toby",
-            password: "AktienBotTobyCarl",
-            database: "stockbot"
+            host: process.env.host,
+            port: process.env.port,
+            user: process.env.user,
+            password: process.env.password,
+            database: process.env.database
         };
         pool = mariadb.createPool(config);
         }

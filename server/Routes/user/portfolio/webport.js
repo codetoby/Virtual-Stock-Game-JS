@@ -1,9 +1,10 @@
 const express = require('express')
 const { getPool } = require('../../../controllers/datenbank/createPool');
-const axios = require('axios');
 const { totalChange } = require('../../../controllers/portfolio/utilsPort');
-
+require('dotenv').config()
+const axios = require('axios');
 const router = express.Router()
+
 let conn;
 
 async function currentPortfolioValue(data) {
@@ -12,7 +13,7 @@ async function currentPortfolioValue(data) {
 
     for await (const stock of data) {
         const ticker = stock.stockticker
-        const url = `https://finnhub.io/api/v1/quote?token=cbobmcaad3i6ndrm5uag&symbol=${ticker.toUpperCase()}`
+        const url = `https://finnhub.io/api/v1/quote?token=${process.env.api_key}&symbol=${ticker.toUpperCase()}`
         const stockData = await axios.get(url)
         const price = stockData.data.c
 

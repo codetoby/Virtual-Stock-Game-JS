@@ -18,7 +18,7 @@ const Chart = () => {
   const [isFetch, setIsFetch] = useState(true);
 
   const fetchDataChart = async () => {
-    await axios.get(`https://api.tleem.me/user/chart`, {
+    await axios.get(`http://localhost:3000/user/chart`, {
       withCredentials: true
     }).then(data => {
       console.log(data)

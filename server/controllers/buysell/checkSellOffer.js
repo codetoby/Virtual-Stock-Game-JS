@@ -1,7 +1,6 @@
 const { getPool } = require("../datenbank/createPool");
 
 let conn;
-let response;
 
 const chechSellOffer = async(userid, stockticker, sellshares) => {
 

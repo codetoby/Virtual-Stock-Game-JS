@@ -1,5 +1,5 @@
 const axios = require('axios')
-
+require('dotenv').config()
 function precise(x) {
     return x.toPrecision();
 }
@@ -14,7 +14,7 @@ async function userStockData(data) {
     for await (const stock of data) {
 
         const {stockticker, shares, buyprice} = stock
-        const url = `https://finnhub.io/api/v1/quote?token=cbobmcaad3i6ndrm5uag&symbol=${stockticker.toUpperCase()}`
+        const url = `https://finnhub.io/api/v1/quote?token=${process.env.api_key}&symbol=${stockticker.toUpperCase()}`
         const stockData = await axios.get(url)
         const price = stockData.data.c
 

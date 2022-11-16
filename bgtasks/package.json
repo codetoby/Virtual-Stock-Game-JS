@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "schedueldTask.js",
-  "scripts": {
-  },
+  "scripts": {},
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.27.2",
+    "dotenv": "^16.0.3",
     "mariadb": "^3.0.1"
   }
 }

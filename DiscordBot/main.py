@@ -1,7 +1,7 @@
-from ast import alias
 import discord
 import os
 from discord.ext import commands
+import dotenv
 
 client = commands.Bot(command_prefix='$', intents=discord.Intents.all())
 
@@ -9,7 +9,6 @@ for filename in os.listdir('./cogs'):
     if filename.endswith('.py'):
         try:
             client.load_extension(f"cogs.{filename[:-3]}")
-            print(f"Loaded {filename}")
         except Exception as e:
             print(f"Failed to load {filename}")
             print(f"[ERROR] {e}")
@@ -42,4 +41,4 @@ async def clear(ctx, amount: int = None):
     else:
         await ctx.channel.purge(11)
 
-client.run('OTk0MzQ5ODQ2NDMxNTQ3NDYz.GBh5IO.OFjrXbno2IcMMvniqNinfr0WEUvop04YDfIWk8')
+client.run(os.getenv('TOKEN'))

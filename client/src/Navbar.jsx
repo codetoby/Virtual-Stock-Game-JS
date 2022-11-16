@@ -12,7 +12,7 @@ function Navbar() {
 
     useEffect(() => {
         const fetchingData = async () => {
-            const data = await axios.get(`https://api.tleem.me/user/getCred`, {
+            const data = await axios.get(`http://localhost:3000/user/getCred`, {
             withCredentials: true
             })
             .then(data => {

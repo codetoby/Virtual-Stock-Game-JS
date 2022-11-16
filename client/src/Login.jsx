@@ -6,7 +6,7 @@ function Login() {
     return (
         <div>
             <form>
-                <button formAction="https://api.tleem.me/api/auth/discord/">Login With Discord</button>
+                <button formAction="http://localhost:3000/api/auth/discord/">Login With Discord</button>
             </form>
         </div>
     )
