@@ -39,7 +39,7 @@ async function currentPortfolioValue(data) {
 
     for await (const stock of data) {
         const ticker = stock.stockticker
-        const url = `https://finnhub.io/api/v1/quote?token=cbobmcaad3i6ndrm5uag&symbol=${ticker.toUpperCase()}`
+        const url = `https://finnhub.io/api/v1/quote?token=${process.env.api_key}&symbol=${ticker.toUpperCase()}`
         const stockData = await axios.get(url)
         const price = stockData.data.c
 
@@ -56,7 +56,7 @@ async function updatePreviousDay(data) {
 
     for await (const stock of data) {
         const ticker = stock.stockticker
-        const url = `https://finnhub.io/api/v1/quote?token=cbobmcaad3i6ndrm5uag&symbol=${ticker.toUpperCase()}`
+        const url = `https://finnhub.io/api/v1/quote?token=${process.env.api_key}&symbol=${ticker.toUpperCase()}`
         const stockData = await axios.get(url)
         const prevprice = stockData.data.pc
 

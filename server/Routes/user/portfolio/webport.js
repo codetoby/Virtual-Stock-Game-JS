@@ -62,7 +62,7 @@ router.get('/', async (req, res) => {
           
             for ( const stock of userStocks) {
     
-                const url = `https://finnhub.io/api/v1/quote?token=cbobmcaad3i6ndrm5uag&symbol=${stock.stockticker.toUpperCase()}`
+                const url = `https://finnhub.io/api/v1/quote?token=${process.env.api_key}&symbol=${stock.stockticker.toUpperCase()}`
                 const stockInfo = await axios.get(url)
     
                 const currentPrice = stockInfo.data.c
