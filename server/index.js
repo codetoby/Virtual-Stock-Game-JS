@@ -9,7 +9,7 @@ app.listen(8880, () => {
     console.log('The API is Starting...')
 })
 
-app.use(cors({ origin: 'https://tleem.me', methods: "GET,HEAD,PUT,PATCH,POST,DELETE", credentials: true}))
+app.use(cors({ origin: 'http://localhost:3000', methods: "GET,HEAD,PUT,PATCH,POST,DELETE", credentials: true}))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 
