@@ -5,7 +5,7 @@ const cors = require('cors')
 require('dotenv').config()
 const app = express()
 
-app.listen(8880, () => {
+app.listen(8080, () => {
     console.log('The API is Starting...')
 })
 

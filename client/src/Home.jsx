@@ -9,7 +9,7 @@ const Home = () => {
     const [login, setLogin] = useState(null)
     const [fetch, setFetch] = useState(true)
     const fetchData = async () => {
-      const login = await axios.get(`http://localhost:3000/user/checkUser`, {
+      const login = await axios.get(`http://localhost:8080/user/checkUser`, {
         withCredentials: true
       }).then(data => {
         if (data.data.success) {

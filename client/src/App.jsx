@@ -11,7 +11,7 @@ function App() {
     const [isFetching, setIsFetching] = useState(true);
 
     const fetchData = async () => {
-        await axios.get(`http://localhost:3000/user/webportfolio`, {
+        await axios.get(`http://localhost:8080/user/webportfolio`, {
             withCredentials: true
         }).then(data => {
             setPortfolio(data.data)
