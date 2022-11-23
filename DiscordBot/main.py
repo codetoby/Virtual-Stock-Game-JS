@@ -40,5 +40,5 @@ async def clear(ctx, amount: int = None):
         await ctx.channel.purge(limit=amount + 1)
     else:
         await ctx.channel.purge(11)
-
+  
 client.run(os.getenv('TOKEN'))
