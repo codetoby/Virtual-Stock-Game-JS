@@ -16,7 +16,7 @@ A Virtual Stock Game written in NodeJs, ReactJS, Python.
 
 Features which a getting added soon:
 
-> Stock Search up on the website to see the most important infos about the stock ticker
+> Stock Search up on the website to see the most important infos about the stock ticker (Java Version supports this)
 
 > better looking UI/Website
 
