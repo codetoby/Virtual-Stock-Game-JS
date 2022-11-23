@@ -1,7 +1,7 @@
 const { Strategy } = require('passport-discord')
 const passport = require('passport');
 const { getPool } = require('../datenbank/createPool');
-
+require('dotenv').config();
 
 let conn;
 
@@ -18,9 +18,9 @@ passport.deserializeUser(async (id, done) => {
 
 passport.use(
     new Strategy({
-    clientID: '994349846431547463',
-    clientSecret:  '35UnFYP_mVM-kSmKOiWVsdmeCv6QCExp',
-    callbackURL: "https://api.tleem.me/api/auth/discord/redirect",
+    clientID: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
+    callbackURL: process.env.CALLBACK_URL,
     scope: ["identify", 'email']
     },
     async (accessToken, refreshToken, profile, done) => {
